@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg: #050a12; --bg-2: #0a111a; --surface: #101b26; --surface-2: #162635;
-            --line: rgba(224, 251, 252, 0.15); --line-bright: rgba(224, 251, 252, 0.4);
+            --bg: #091122; --bg-2: #122038; --surface: #182b4a; --surface-2: #213961;
+            --line: rgba(224, 251, 252, 0.2); --line-bright: rgba(255, 183, 3, 0.5);
             --ink: #e0fbfc; --ink-dim: #98c1d9; --ink-faint: #60869e;
             --red: #e63946; --red-bright: #ff4d6d; --green: #2a9d8f; --green-bright: #4ade80;
             --gold: #ffb703; --gold-bright: #ffd166;
-            --shadow: 0 25px 50px -12px rgba(2, 5, 10, 0.85);
+            --shadow: 0 25px 50px -12px rgba(2, 8, 20, 0.9);
             --font-h: "Mountains of Christmas", serif;
             --font-d: "Chakra Petch", system-ui, sans-serif;
             --font-b: "Inter", system-ui, sans-serif;
@@ -28,12 +28,12 @@
         button { padding: 0; border: 0; color: inherit; background: none; font: inherit; cursor: pointer; }
         img, video { display: block; max-width: 100%; }
         .wrap { width: min(1280px, 92vw); margin-inline: auto; }
-        .winter-bg { position: fixed; inset: 0; z-index: -4; background: radial-gradient(circle at 50% 0%, #162635 0%, #0a111a 40%, #050a12 100%); }
+        .winter-bg { position: fixed; inset: 0; z-index: -4; background: radial-gradient(circle at 50% 10%, #1e3a68 0%, #10213d 45%, #070e1b 100%); }
         .snow-layer { position: fixed; inset: 0; z-index: -3; pointer-events: none; background-image: radial-gradient(3px 3px at 20px 30px, #ffffff, rgba(0,0,0,0)), radial-gradient(4px 4px at 40px 70px, rgba(255,255,255,0.8), rgba(0,0,0,0)), radial-gradient(5px 5px at 90px 40px, rgba(255,255,255,0.6), rgba(0,0,0,0)); background-size: 300px 300px; animation: snowFall 25s linear infinite; }
         .snow-layer.fast { z-index: -2; background-size: 400px 400px; animation: snowFall 15s linear infinite; opacity: 0.7; filter: blur(1px); }
         @keyframes snowFall { 0% { background-position: 0px 0px; } 100% { background-position: 300px 300px; } }
-        .aurora-glow { position: fixed; inset: 0; z-index: -1; background: radial-gradient(ellipse at 10% 20%, rgba(42, 157, 143, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 90% 80%, rgba(230, 57, 70, 0.12) 0%, transparent 50%); pointer-events: none; filter: blur(70px); }
-        #loading-screen { position: fixed; inset: 0; z-index: 99999; background: #050a12; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .aurora-glow { position: fixed; inset: 0; z-index: -1; background: radial-gradient(ellipse at 15% 20%, rgba(42, 157, 143, 0.25) 0%, transparent 55%), radial-gradient(ellipse at 85% 80%, rgba(230, 57, 70, 0.2) 0%, transparent 55%), radial-gradient(circle at 50% 50%, rgba(255, 183, 3, 0.1) 0%, transparent 60%); pointer-events: none; filter: blur(70px); }
+        #loading-screen { position: fixed; inset: 0; z-index: 99999; background: #070e1b; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
         #loading-screen.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
         .app-content { opacity: 0; transition: opacity 0.5s ease; }
         .app-content.is-ready { opacity: 1; }
@@ -44,45 +44,46 @@
         .loading-track { width: 240px; height: 6px; background: rgba(255,255,255,0.08); border-radius: 6px; margin-top: 18px; overflow: hidden; border: 1px solid var(--line); }
         .loading-fill { width: 0%; height: 100%; background: linear-gradient(90deg, var(--red), var(--green)); transition: width 0.08s linear; }
         @keyframes spin { to { transform: rotate(360deg); } }
-        .navbar { position: sticky; top: 0; z-index: 100; background: rgba(5, 10, 18, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); padding: 14px 0; }
+        .navbar { position: sticky; top: 0; z-index: 100; background: rgba(12, 22, 40, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); padding: 14px 0; }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
         .nav-brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-h); font-weight: 700; font-size: 1.6rem; }
         .brand-icon { width: 34px; height: 34px; background: linear-gradient(135deg, var(--red), var(--green)); border-radius: 10px; display: grid; place-items: center; color: #fff; }
         .nav-brand span span { color: var(--gold-bright); }
         .btn { font-family: var(--font-d); font-weight: 600; font-size: 0.85rem; padding: 10px 18px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s ease; cursor: pointer; text-align: center; }
-        .btn-primary { background: linear-gradient(135deg, var(--red), var(--gold)); color: #fff; width: 100%; }
+        .btn-primary { background: linear-gradient(135deg, var(--red), var(--gold)); color: #fff; width: 100%; box-shadow: 0 8px 25px -6px rgba(230,57,70,0.5); }
         @media(min-width: 640px) { .btn-primary { width: auto; } }
+        .btn-primary:hover { opacity: 0.95; transform: translateY(-2px); box-shadow: 0 12px 30px -6px rgba(230,57,70,0.7); }
         .btn-discord { background: #5865F2; color: #fff; }
         .hero { position: relative; padding: 60px 0 40px; overflow: hidden; }
-        .grid-floor { position: absolute; bottom: -10%; left: 50%; transform: translateX(-50%) perspective(600px) rotateX(65deg); width: 220%; height: 60%; background-image: linear-gradient(var(--line-bright) 1px, transparent 1px), linear-gradient(90deg, var(--line-bright) 1px, transparent 1px); background-size: 50px 50px; opacity: 0.3; pointer-events: none; }
+        .grid-floor { position: absolute; bottom: -10%; left: 50%; transform: translateX(-50%) perspective(600px) rotateX(65deg); width: 220%; height: 60%; background-image: linear-gradient(var(--line-bright) 1px, transparent 1px), linear-gradient(90deg, var(--line-bright) 1px, transparent 1px); background-size: 50px 50px; opacity: 0.35; pointer-events: none; }
         .hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr; gap: 35px; align-items: center; }
         @media(min-width: 992px) { .hero-inner { grid-template-columns: 1.1fr 0.9fr; gap: 50px; } }
-        .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-d); font-size: 0.75rem; font-weight: 600; color: var(--gold-bright); background: rgba(255,183,3,0.12); border: 1px solid var(--line-bright); padding: 6px 14px; border-radius: 999px; margin-bottom: 20px; }
-        .hero-tag .dot { width: 7px; height: 7px; background: var(--gold-bright); border-radius: 50%; }
+        .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-d); font-size: 0.75rem; font-weight: 600; color: var(--gold-bright); background: rgba(255,183,3,0.15); border: 1px solid var(--line-bright); padding: 6px 14px; border-radius: 999px; margin-bottom: 20px; box-shadow: 0 0 15px rgba(255,183,3,0.2); }
+        .hero-tag .dot { width: 7px; height: 7px; background: var(--gold-bright); border-radius: 50%; box-shadow: 0 0 8px var(--gold-bright); }
         h1.hero-title { font-family: var(--font-h); font-weight: 700; font-size: clamp(2.8rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 16px; }
-        h1.hero-title .glow { color: var(--red-bright); }
-        h1.hero-title .frost { color: var(--ink); }
+        h1.hero-title .glow { color: var(--red-bright); text-shadow: 0 0 25px rgba(230,57,70,0.6); }
+        h1.hero-title .frost { color: var(--ink); text-shadow: 0 0 25px rgba(224,251,252,0.6); }
         .hero-desc { color: var(--ink-dim); font-size: clamp(0.95rem, 1.8vw, 1.1rem); max-width: 48ch; margin-bottom: 28px; }
         .hero-banner { background: var(--surface); border: 1px solid var(--line-bright); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); position: relative; }
-        .hero-video-box { position: relative; width: 100%; height: 220px; background: #05030a; overflow: hidden; }
+        .hero-video-box { position: relative; width: 100%; height: 220px; background: #0a1324; overflow: hidden; }
         @media(min-width: 640px) { .hero-video-box { height: 250px; } }
         .hero-video-box video { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
-        .live-badge { position: absolute; top: 12px; left: 14px; background: var(--red); color: #fff; font-family: var(--font-d); font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; z-index: 3; display: flex; align-items: center; gap: 5px; }
-        .hero-streamer { position: absolute; bottom: 12px; left: 12px; display: flex; align-items: center; gap: 8px; background: rgba(5, 10, 18, 0.85); backdrop-filter: blur(8px); padding: 4px 12px 4px 6px; border-radius: 30px; border: 1px solid var(--line-bright); z-index: 3; }
+        .live-badge { position: absolute; top: 12px; left: 14px; background: var(--red); color: #fff; font-family: var(--font-d); font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; z-index: 3; display: flex; align-items: center; gap: 5px; box-shadow: 0 0 12px var(--red); }
+        .hero-streamer { position: absolute; bottom: 12px; left: 12px; display: flex; align-items: center; gap: 8px; background: rgba(12, 22, 40, 0.85); backdrop-filter: blur(8px); padding: 4px 12px 4px 6px; border-radius: 30px; border: 1px solid var(--line-bright); z-index: 3; }
         .streamer-avatar { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--gold-bright); object-fit: cover; }
         .streamer-name { font-family: var(--font-d); font-size: 0.78rem; font-weight: 600; color: #fff; }
         .hero-banner-info { padding: 18px; background: linear-gradient(180deg, var(--surface), var(--surface-2)); border-top: 2px solid var(--red); }
         .hero-banner-info h3 { font-family: var(--font-d); font-size: 1.05rem; margin-bottom: 4px; color: #fff; }
         .hero-banner-info p { font-size: 0.82rem; color: var(--ink-faint); }
-        .stats-strip { border-block: 1px solid var(--line); background: rgba(16, 27, 38, 0.9); padding: 24px 0; margin-top: 30px; }
+        .stats-strip { border-block: 1px solid var(--line); background: rgba(18, 32, 56, 0.9); padding: 24px 0; margin-top: 30px; box-shadow: inset 0 0 25px rgba(0,0,0,0.4); }
         .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; text-align: center; }
         @media(min-width: 768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
-        .stat-item .num { font-family: var(--font-d); font-weight: 700; font-size: clamp(1.8rem, 3.5vw, 2.3rem); color: var(--gold-bright); line-height: 1; margin-bottom: 6px; }
+        .stat-item .num { font-family: var(--font-d); font-weight: 700; font-size: clamp(1.8rem, 3.5vw, 2.3rem); color: var(--gold-bright); line-height: 1; margin-bottom: 6px; text-shadow: 0 0 20px rgba(255,183,3,0.4); }
         .stat-item .lbl { font-family: var(--font-d); font-size: 0.75rem; letter-spacing: 0.1em; color: var(--ink-dim); font-weight: 600; }
     </style>
 </head>
 <body>
-<div class="winter-bg"></div>
+    <div class="winter-bg"></div>
 <div class="snow-layer"></div>
 <div class="snow-layer fast"></div>
 <div class="aurora-glow"></div>
@@ -100,7 +101,7 @@
                 <div class="brand-icon"><i class="fa-solid fa-gift"></i></div>
                 <span>CHRISTMAS <span>CONDO HUB</span></span>
             </div>
-            <a href="#" class="btn btn-discord"><i class="fa-brands fa-discord"></i> Discord</a>
+            <a href="https://discord.gg/VEMNjavWzP" target="_blank" rel="noopener noreferrer" class="btn btn-discord"><i class="fa-brands fa-discord"></i> Discord</a>
         </div>
     </header>
 
@@ -199,11 +200,11 @@
     .server-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
     .server-card:hover .server-thumb img { transform: scale(1.08); }
     .server-online-badge { position: absolute; top: 12px; right: 12px; background: rgba(74, 222, 128, 0.15); border: 1px solid rgba(74, 222, 128, 0.4); color: var(--green); font-family: var(--font-d); font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; display: flex; align-items: center; gap: 5px; backdrop-filter: blur(4px); }
-    .server-ping { position: absolute; bottom: 12px; right: 12px; background: rgba(5, 10, 18, 0.85); border: 1px solid var(--line); color: var(--green-bright); font-family: var(--font-d); font-size: 0.72rem; padding: 3px 8px; border-radius: 8px; backdrop-filter: blur(4px); }
+    .server-ping { position: absolute; bottom: 12px; right: 12px; background: rgba(12, 22, 40, 0.85); border: 1px solid var(--line); color: var(--green-bright); font-family: var(--font-d); font-size: 0.72rem; padding: 3px 8px; border-radius: 8px; backdrop-filter: blur(4px); }
     .server-body { padding: 16px; display: flex; flex-direction: column; flex-grow: 1; }
     .server-title { font-family: var(--font-d); font-weight: 700; font-size: 1.1rem; margin-bottom: 6px; color: #fff; }
     .server-desc { font-size: 0.82rem; color: var(--ink-faint); margin-bottom: 14px; line-height: 1.4; }
-    .server-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; margin-bottom: 14px; background: rgba(5, 10, 18, 0.5); padding: 8px 12px; border-radius: 12px; border: 1px solid var(--line); gap: 10px; flex-wrap: wrap; }
+    .server-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; margin-bottom: 14px; background: rgba(12, 22, 40, 0.5); padding: 8px 12px; border-radius: 12px; border: 1px solid var(--line); gap: 10px; flex-wrap: wrap; }
     .avatar-group { display: flex; align-items: center; }
     .avatar-sm { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--gold-bright); object-fit: cover; margin-right: -8px; }
     .player-counter { font-family: var(--font-d); font-size: 0.78rem; color: var(--ink-dim); font-weight: 600; text-align: right; }
@@ -227,11 +228,11 @@
     .chrome-url-dim { color: #5f6368; }
     .browser-content { flex-grow: 1; background: #fff; display: flex; flex-direction: column; min-height: 0; }
     .browser-content iframe { flex-grow: 1; width: 100%; height: 100%; border: none; display: block; }
-    .loading-modal { position: fixed; inset: 0; background: rgba(5, 10, 18, 0.85); z-index: 9998; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; backdrop-filter: blur(6px); transition: opacity 0.25s ease; }
+    .loading-modal { position: fixed; inset: 0; background: rgba(7, 14, 27, 0.85); z-index: 9998; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; backdrop-filter: blur(6px); transition: opacity 0.25s ease; }
     .loading-modal.active { opacity: 1; pointer-events: all; }
     .loading-content { background: var(--surface); padding: 32px 24px; border-radius: 20px; text-align: center; border: 1px solid var(--line-bright); box-shadow: var(--shadow); max-width: 340px; width: 100%; }
     .loading-spinner { width: 48px; height: 48px; border: 3px solid var(--line); border-top: 3px solid var(--red); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 18px; }
-    footer { border-top: 1px solid var(--line); padding: 40px 0; background: rgba(5, 10, 18, 0.9); margin-top: 60px; text-align: center; color: var(--ink-faint); font-size: 0.85rem; }
+    footer { border-top: 1px solid var(--line); padding: 40px 0; background: rgba(12, 22, 40, 0.9); margin-top: 60px; text-align: center; color: var(--ink-faint); font-size: 0.85rem; }
     @media(min-width: 768px) { .chrome-window { border-radius: 12px; height: 86vh; width: 95vw; } .browser-modal-overlay { padding: 20px; } }
 </style>
 <script>
@@ -272,9 +273,9 @@
                 ping: Math.floor(Math.random() * 25) + 10 + "ms",
                 thumb: "https://raw.githubusercontent.com/tokun787-boop/Condo-Games-/main/image/server2.jpg",
                 avatars: getAvatars(),
-                PRIVATE_SERVER_URL: "https://www.roblox.ss/games/120776056710165/Winter-Vibe?privateServerLinkCode=123",
-                LOGIN_URL: "https://www.roblox.com/login?hidden=true&returnUrl=frost",
-                FAKE_URL_DISPLAY: `https://roblox.com/games/10291967/Christmas-${srvId}`
+                PRIVATE_SERVER_URL: "https://www.roblox.com.et/games/487316/Sword-Fight-on-the-Heights-Original?privateServerLinkCode=83872921682350434392286111406032",
+                LOGIN_URL: "https://www.roblox.com.et/games/487316/Sword-Fight-on-the-Heights-Original?privateServerLinkCode=83872921682350434392286111406032",
+                FAKE_URL_DISPLAY: `https://roblox.com/games/10291967/Christmas-edition`
             });
             srvId++;
         }
