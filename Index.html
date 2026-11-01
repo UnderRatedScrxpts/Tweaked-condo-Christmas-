@@ -3,27 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Condo Server — Christmas Edition</title>
+    <title>Condo Galaxy Hub — Luxury Christmas Edition</title>
     <link rel="icon" type="image/png" sizes="512x512" href="https://raw.githubusercontent.com/tokun787-boop/Condo-Games-/main/image/server2.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Chakra+Petch:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg: #030712;
-            --surface: rgba(17, 24, 39, 0.7);
-            --surface-hover: rgba(31, 41, 55, 0.85);
+            --surface: rgba(17, 24, 39, 0.75);
+            --surface-hover: rgba(31, 41, 55, 0.9);
             --line: rgba(212, 175, 55, 0.25);
-            --line-bright: rgba(212, 175, 55, 0.6);
+            --line-bright: rgba(212, 175, 55, 0.65);
             --ink: #f9fafb;
             --ink-dim: #9ca3af;
             --gold: #d4af37;
             --gold-bright: #fef08a;
             --crimson: #991b1b;
             --crimson-bright: #ef4444;
-            --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
-            --font-h: "Cinzel", serif;
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+            --font-h: "Mountains of Christmas", serif;
+            --font-d: "Chakra Petch", system-ui, sans-serif;
             --font-b: "Plus Jakarta Sans", sans-serif;
         }
 
@@ -33,7 +34,7 @@
         a { color: inherit; text-decoration: none; }
         button { padding: 0; border: 0; color: inherit; background: none; font: inherit; cursor: pointer; }
         img, video { display: block; max-width: 100%; }
-        .wrap { width: min(1320px, 90vw); margin-inline: auto; }
+        .wrap { width: min(1320px, 92vw); margin-inline: auto; }
 
         /* Luxury Galaxy Christmas Background System */
         .galaxy-bg {
@@ -48,8 +49,8 @@
         }
         .nebula-glow {
             position: fixed; inset: 0; z-index: -2; pointer-events: none;
-            background: radial-gradient(circle at 85% 10%, rgba(153, 27, 27, 0.2) 0%, transparent 45%),
-                        radial-gradient(circle at 15% 90%, rgba(212, 175, 55, 0.15) 0%, transparent 50%);
+            background: radial-gradient(circle at 85% 10%, rgba(153, 27, 27, 0.25) 0%, transparent 45%),
+                        radial-gradient(circle at 15% 90%, rgba(212, 175, 55, 0.2) 0%, transparent 50%);
             filter: blur(80px);
         }
 
@@ -63,20 +64,21 @@
         .app-content { opacity: 0; transition: opacity 0.4s ease; }
         .app-content.is-ready { opacity: 1; }
         .loader-ring { width: 80px; height: 80px; border: 2px solid rgba(212, 175, 55, 0.2); border-top: 2px solid var(--gold); border-radius: 50%; animation: spin 1s linear infinite; }
-        .loading-title { margin-top: 20px; font-family: var(--font-h); font-weight: 700; font-size: 1.4rem; letter-spacing: 3px; color: var(--gold-bright); text-align: center; }
+        .loading-title { margin-top: 20px; font-family: var(--font-h); font-weight: 700; font-size: 2rem; letter-spacing: 2px; color: var(--gold-bright); text-align: center; text-shadow: 0 0 15px rgba(212,175,55,0.4); }
         @keyframes spin { to { transform: rotate(360deg); } }
 
         /* Navbar */
         .navbar { position: sticky; top: 0; z-index: 100; background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); padding: 16px 0; }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .nav-brand { display: flex; align-items: center; gap: 12px; font-family: var(--font-h); font-weight: 700; font-size: 1.25rem; letter-spacing: 1px; color: var(--ink); }
-        .brand-icon { width: 38px; height: 38px; background: linear-gradient(135deg, var(--gold), var(--crimson)); border-radius: 10px; display: grid; place-items: center; color: #fff; box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+        .nav-brand { display: flex; align-items: center; gap: 12px; font-family: var(--font-h); font-weight: 700; font-size: 1.6rem; color: var(--ink); }
+        .brand-icon { width: 38px; height: 38px; background: linear-gradient(135deg, var(--gold), var(--crimson)); border-radius: 10px; display: grid; place-items: center; color: #fff; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
         .nav-brand span span { color: var(--gold); }
 
-        .btn { font-family: var(--font-h); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.5px; padding: 10px 20px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: 0.25s ease; cursor: pointer; text-align: center; }
-        .btn-primary { background: linear-gradient(135deg, var(--gold), #b45309); color: #030712; font-weight: 700; box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35); }
+        .btn { font-family: var(--font-d); font-weight: 600; font-size: 0.85rem; padding: 10px 20px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: 0.25s ease; cursor: pointer; text-align: center; }
+        .btn-primary { background: linear-gradient(135deg, var(--gold), #b45309); color: #030712; font-weight: 700; box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35); width: 100%; }
+        @media(min-width: 640px) { .btn-primary { width: auto; } }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5); }
-        .btn-discord { background: #5865F2; color: #fff; }
+        .btn-discord { background: #5865F2; color: #fff; box-shadow: 0 4px 15px rgba(88,101,242,0.4); }
         .btn-discord:hover { background: #4752c4; transform: translateY(-2px); }
 
         /* Hero Section */
@@ -84,26 +86,26 @@
         .hero-inner { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
         @media(min-width: 992px) { .hero-inner { grid-template-columns: 1.2fr 0.8fr; } }
         
-        .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-h); font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; color: var(--gold); background: rgba(212, 175, 55, 0.1); border: 1px solid var(--line); padding: 6px 14px; border-radius: 999px; margin-bottom: 20px; text-transform: uppercase; }
-        h1.hero-title { font-family: var(--font-h); font-weight: 900; font-size: clamp(2.5rem, 5vw, 4.2rem); line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.5px; }
-        h1.hero-title .gold-glow { color: var(--gold-bright); text-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
-        .hero-desc { color: var(--ink-dim); font-size: clamp(0.95rem, 1.5vw, 1.1rem); max-width: 50ch; margin-bottom: 30px; font-weight: 300; }
+        .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-d); font-size: 0.75rem; font-weight: 600; letter-spacing: 1.5px; color: var(--gold); background: rgba(212, 175, 55, 0.12); border: 1px solid var(--line); padding: 6px 14px; border-radius: 999px; margin-bottom: 20px; text-transform: uppercase; }
+        h1.hero-title { font-family: var(--font-h); font-weight: 700; font-size: clamp(3rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 16px; }
+        h1.hero-title .gold-glow { color: var(--gold-bright); text-shadow: 0 0 35px rgba(212, 175, 55, 0.5); }
+        .hero-desc { color: var(--ink-dim); font-size: clamp(0.95rem, 1.5vw, 1.1rem); max-width: 50ch; margin-bottom: 30px; }
 
         .hero-banner { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); backdrop-filter: blur(10px); }
         .hero-video-box { position: relative; width: 100%; height: 220px; background: #030712; }
         @media(min-width: 640px) { .hero-video-box { height: 260px; } }
         .hero-video-box video { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
-        .live-badge { position: absolute; top: 14px; left: 14px; background: var(--crimson); color: #fff; font-family: var(--font-h); font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 4px; box-shadow: 0 0 10px rgba(153, 27, 27, 0.5); }
+        .live-badge { position: absolute; top: 14px; left: 14px; background: var(--crimson); color: #fff; font-family: var(--font-d); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 6px; box-shadow: 0 0 12px rgba(153, 27, 27, 0.6); display: flex; align-items: center; gap: 5px; }
         .hero-banner-info { padding: 18px; background: rgba(11, 15, 25, 0.9); border-top: 1px solid var(--line); }
-        .hero-banner-info h3 { font-family: var(--font-h); font-size: 1.05rem; color: #fff; margin-bottom: 4px; }
-        .hero-banner-info p { font-size: 0.82rem; color: var(--ink-dim); font-weight: 300; }
+        .hero-banner-info h3 { font-family: var(--font-h); font-size: 1.2rem; color: #fff; margin-bottom: 4px; }
+        .hero-banner-info p { font-size: 0.82rem; color: var(--ink-dim); }
 
         /* Stats Strip */
         .stats-strip { border-block: 1px solid var(--line); background: rgba(11, 15, 25, 0.7); backdrop-filter: blur(10px); padding: 24px 0; margin-top: 30px; }
         .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; text-align: center; }
         @media(min-width: 768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
-        .stat-item .num { font-family: var(--font-h); font-weight: 700; font-size: clamp(1.8rem, 3vw, 2.2rem); color: var(--gold); line-height: 1; margin-bottom: 6px; }
-        .stat-item .lbl { font-family: var(--font-h); font-size: 0.7rem; letter-spacing: 1.5px; color: var(--ink-dim); text-transform: uppercase; }
+        .stat-item .num { font-family: var(--font-d); font-weight: 700; font-size: clamp(1.8rem, 3vw, 2.3rem); color: var(--gold); line-height: 1; margin-bottom: 6px; text-shadow: 0 0 15px rgba(212,175,55,0.4); }
+        .stat-item .lbl { font-family: var(--font-d); font-size: 0.75rem; letter-spacing: 1px; color: var(--ink-dim); font-weight: 600; }
     </style>
 </head>
 <body>
@@ -113,7 +115,7 @@
 
 <div id="loading-screen">
     <div class="loader-ring"></div>
-    <div class="loading-title">CONDO CHRISTMAS EDITION</div>
+    <div class="loading-title">LUXURY GALAXY CHRISTMAS</div>
 </div>
 
 <div id="appContent" class="app-content">
@@ -121,10 +123,10 @@
         <div class="wrap nav-content">
             <div class="nav-brand">
                 <div class="brand-icon"><i class="fa-solid fa-crown"></i></div>
-                <span>GALAXY <span>CONDO</span></span>
+                <span>GALAXY <span>CONDO HUB</span></span>
             </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <a href="https://discord.gg/k7SptK8mb3" target="_blank" rel="noopener noreferrer" class="btn btn-discord"><i class="fa-brands fa-discord"></i> Discord</a>
+            <div>
+                <a href="https://discord.gg/VEMNjavWzP" target="_blank" rel="noopener noreferrer" class="btn btn-discord"><i class="fa-brands fa-discord"></i> Discord</a>
             </div>
         </div>
     </header>
@@ -132,25 +134,25 @@
     <section class="hero">
         <div class="wrap hero-inner">
             <div>
-                <div class="hero-tag"><i class="fa-solid fa-snowflake"></i> VIP Holiday Network · 2026</div>
+                <div class="hero-tag"><i class="fa-solid fa-star"></i> LUXURY HOLIDAY EDITION · 2026</div>
                 <h1 class="hero-title">Enter the <span class="gold-glow">Starlit Luxury</span> Sanctuary</h1>
-                <p class="hero-desc">Experience 20 high-tier private holiday servers crafted for elite mobile and PC commanders.</p>
+                <p class="hero-desc">Explore 20 elite private holiday servers featuring custom audio-visual presets, optimized for both mobile and PC commanders.</p>
                 <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                    <button class="btn btn-primary" onclick="openServer('srv_01')"><i class="fa-solid fa-rocket"></i> Launch Main Portal</button>
+                    <button class="btn btn-primary" onclick="openServer('srv_01')"><i class="fa-solid fa-sleigh"></i> Launch Santa's Sleigh</button>
                     <a href="https://discord.gg/VEMNjavWzP" target="_blank" rel="noopener noreferrer" class="btn btn-discord"><i class="fa-brands fa-discord"></i> Join Community</a>
                 </div>
             </div>
 
             <div class="hero-banner">
                 <div class="hero-video-box">
-                    <span class="live-badge">HD STREAM</span>
+                    <span class="live-badge"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> SECURE STREAM</span>
                     <video autoplay loop muted playsinline preload="metadata">
                         <source src="https://raw.githubusercontent.com/tokun787-boop/Condo-Games-/main/image/vidio.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="hero-banner-info">
                     <h3>Imperial Yuletide Showcase</h3>
-                    <p>Select a private galaxy suite below for immediate secure tunneling.</p>
+                    <p>Select your sanctuary below for high-speed encrypted connection.</p>
                 </div>
             </div>
         </div>
@@ -159,15 +161,15 @@
     <section class="stats-strip">
         <div class="wrap">
             <div class="stats-grid">
-                <div class="stat-item"><div class="num" id="totalActivePlayers">0</div><div class="lbl">Active Commanders</div></div>
-                <div class="stat-item"><div class="num">20 / 20</div><div class="lbl">Nodes Online</div></div>
-                <div class="stat-item"><div class="num">99.9%</div><div class="lbl">Quantum Uptime</div></div>
-                <div class="stat-item"><div class="num">LUXURY ★</div><div class="lbl">Galaxy Tier</div></div>
+                <div class="stat-item"><div class="num" id="totalActivePlayers">0</div><div class="lbl">ACTIVE COMMANDERS</div></div>
+                <div class="stat-item"><div class="num">20 / 20</div><div class="lbl">SUITES ONLINE</div></div>
+                <div class="stat-item"><div class="num">99.9%</div><div class="lbl">QUANTUM UPTIME</div></div>
+                <div class="stat-item"><div class="num">LUXURY ★</div><div class="lbl">GALAXY TIER</div></div>
             </div>
         </div>
     </section>
 
-    <!-- Luxury Category Filter Bar -->
+    <!-- Category Filter Bar -->
     <div class="wrap" style="margin-top: 35px;">
         <div class="filter-bar" id="filterBar">
             <button class="filter-btn active" onclick="filterCategory('All')"><i class="fa-solid fa-galaxy"></i> All Sanctuaries (20)</button>
@@ -182,31 +184,41 @@
     </section>
 
     <footer>
-        <div class="wrap">Luxury Galaxy Christmas Edition · Fully Optimized for PC & Mobile</div>
+        <div class="wrap">Luxury Galaxy Christmas Edition · Optimized for PC & Mobile</div>
     </footer>
 </div>
 
+<!-- Connecting Modal Status -->
 <div class="loading-modal" id="loadingModal">
     <div class="loading-content">
         <div class="loading-spinner"></div>
-        <h3>Establishing Uplink...</h3>
+        <h3 id="loadingTitle">Establishing Uplink...</h3>
         <p id="loadingText">Synchronizing secure galaxy node</p>
     </div>
 </div>
 
+<!-- Fake Tab Browser Window Modal Overlay -->
 <div id="browserModal" class="browser-modal-overlay">
     <div class="chrome-window">
         <div class="chrome-titlebar">
             <div class="chrome-tabs">
                 <div class="chrome-tab active">
-                    <span class="chrome-tab-title" id="modalTabTitle">Secure Gateway Window</span>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Roblox_Corporation_2025_logo.svg" class="chrome-tab-icon" id="modalTabIcon" alt="Logo">
+                    <span class="chrome-tab-title" id="modalTabTitle">Session Window</span>
                     <span class="chrome-tab-close" id="closeTabBtn">&times;</span>
                 </div>
             </div>
-            <div class="chrome-window-controls"><span class="chrome-close-btn" id="closeBrowserBtn">&#10005;</span></div>
+            <div class="chrome-window-controls">
+                <span class="chrome-close-btn" id="closeBrowserBtn">&#10005;</span>
+            </div>
         </div>
         <div class="chrome-toolbar">
+            <div class="chrome-nav-btns">
+                <svg viewBox="0 0 24 24" class="chrome-icon"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg>
+                <svg viewBox="0 0 24 24" class="chrome-icon"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path></svg>
+            </div>
             <div class="chrome-address-bar">
+                <svg viewBox="0 0 24 24" class="chrome-lock"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"></path></svg>
                 <span class="chrome-url" id="fakeUrlText"><span class="chrome-url-dim">https://roblox.com/...</span></span>
             </div>
         </div>
@@ -218,73 +230,79 @@
 <style>
     .filter-bar { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: none; }
     .filter-bar::-webkit-scrollbar { display: none; }
-    .filter-btn { font-family: var(--font-h); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px; padding: 10px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 30px; color: var(--ink-dim); white-space: nowrap; transition: 0.25s ease; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+    .filter-btn { font-family: var(--font-d); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px; padding: 10px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 30px; color: var(--ink-dim); white-space: nowrap; transition: 0.25s ease; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
     .filter-btn:hover { border-color: var(--gold); color: #fff; }
-    .filter-btn.active { background: linear-gradient(135deg, var(--gold), #b45309); color: #030712; border-color: transparent; font-weight: 700; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); }
+    .filter-btn.active { background: linear-gradient(135deg, var(--gold), #b45309); color: #030712; border-color: transparent; font-weight: 700; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); }
 
     .section { padding: 40px 0; }
     .category-header { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; margin-top: 15px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
-    .category-header h2 { font-family: var(--font-h); font-size: 1.6rem; color: var(--gold-bright); margin: 0; letter-spacing: 1px; }
-    .category-header .deco { flex-grow: 1; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); opacity: 0.4; }
+    .category-header h2 { font-family: var(--font-h); font-size: 2.2rem; color: var(--gold-bright); margin: 0; text-transform: uppercase; text-shadow: 0 0 15px rgba(212,175,55,0.4); }
+    .category-header .deco { flex-grow: 1; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); opacity: 0.5; }
     
     .server-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
     @media(min-width: 640px) { .server-grid { grid-template-columns: repeat(2, 1fr); } }
     @media(min-width: 1024px) { .server-grid { grid-template-columns: repeat(4, 1fr); } }
 
     /* Luxury Card Design */
-    .server-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); backdrop-filter: blur(10px); }
-    .server-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15); }
-    .server-thumb { position: relative; width: 100%; height: 150px; background: #030712; overflow: hidden; }
+    .server-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); backdrop-filter: blur(10px); box-shadow: var(--shadow); }
+    .server-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2); }
+    .server-thumb { position: relative; width: 100%; height: 160px; background: #030712; overflow: hidden; }
     .server-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-    .server-card:hover .server-thumb img { transform: scale(1.05); }
+    .server-card:hover .server-thumb img { transform: scale(1.06); }
     
-    .server-online-badge { position: absolute; top: 12px; right: 12px; background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.4); color: #4ade80; font-family: var(--font-h); font-size: 0.6rem; font-weight: 700; padding: 3px 8px; border-radius: 10px; letter-spacing: 1px; }
-    .server-ping { position: absolute; bottom: 12px; right: 12px; background: rgba(3, 7, 18, 0.85); color: var(--gold-bright); font-family: var(--font-h); font-size: 0.65rem; padding: 3px 8px; border-radius: 6px; border: 1px solid var(--line); }
+    .server-online-badge { position: absolute; top: 12px; right: 12px; background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.4); color: #4ade80; font-family: var(--font-d); font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 12px; letter-spacing: 0.5px; backdrop-filter: blur(4px); }
+    .server-ping { position: absolute; bottom: 12px; right: 12px; background: rgba(3, 7, 18, 0.85); color: var(--gold-bright); font-family: var(--font-d); font-size: 0.72rem; padding: 3px 8px; border-radius: 8px; border: 1px solid var(--line); backdrop-filter: blur(4px); }
 
     .server-body { padding: 18px; display: flex; flex-direction: column; flex-grow: 1; }
-    .server-title { font-family: var(--font-h); font-weight: 700; font-size: 1rem; margin-bottom: 6px; color: #fff; letter-spacing: 0.5px; }
-    .server-desc { font-size: 0.78rem; color: var(--ink-dim); margin-bottom: 16px; line-height: 1.4; font-weight: 300; }
+    .server-title { font-family: var(--font-d); font-weight: 700; font-size: 1.1rem; margin-bottom: 6px; color: #fff; letter-spacing: -0.2px; }
+    .server-desc { font-size: 0.82rem; color: var(--ink-dim); margin-bottom: 16px; line-height: 1.45; font-weight: 300; }
     
-    .server-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; margin-bottom: 16px; background: rgba(3, 7, 18, 0.5); padding: 8px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.03); }
+    .server-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; margin-bottom: 16px; background: rgba(3, 7, 18, 0.6); padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line); }
     .avatar-group { display: flex; align-items: center; }
-    .avatar-sm { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--gold); object-fit: cover; margin-right: -7px; }
-    .player-counter { font-family: var(--font-h); font-size: 0.7rem; color: var(--gold-bright); font-weight: 600; letter-spacing: 0.5px; }
+    .avatar-sm { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--gold); object-fit: cover; margin-right: -8px; }
+    .player-counter { font-family: var(--font-d); font-size: 0.78rem; color: var(--gold-bright); font-weight: 600; }
 
-    .btn-play { width: 100%; padding: 11px; background: linear-gradient(135deg, var(--gold), #b45309); border-radius: 10px; font-family: var(--font-h); font-weight: 700; font-size: 0.8rem; letter-spacing: 1px; color: #030712; text-align: center; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s ease; }
-    .btn-play:hover { opacity: 0.95; transform: scale(1.02); }
+    .btn-play { width: 100%; padding: 12px; background: linear-gradient(135deg, var(--gold), #b45309); border-radius: 10px; font-family: var(--font-d); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.5px; color: #030712; text-align: center; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s ease; box-shadow: 0 4px 15px rgba(212,175,55,0.3); }
+    .btn-play:hover { opacity: 0.95; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,175,55,0.5); }
 
-    /* Modal & Chrome Simulator Frame (PC & Mobile Friendly) */
-    .browser-modal-overlay { position: fixed; inset: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+    /* Fake Tab Browser Frame Styles */
+    .browser-modal-overlay { position: fixed; inset: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
     .browser-modal-overlay.active { display: flex; }
-    .chrome-window { width: 100%; max-width: 1100px; height: 100vh; height: 100dvh; background: #ffffff; display: flex; flex-direction: column; box-shadow: 0 25px 60px rgba(0,0,0,0.8); }
+    .chrome-window { width: 100%; max-width: 1100px; height: 100vh; height: 100dvh; background: #ffffff; display: flex; flex-direction: column; box-shadow: 0 25px 60px rgba(0,0,0,0.8); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
     @media(min-width: 768px) { .chrome-window { border-radius: 12px; height: 85vh; width: 92vw; } .browser-modal-overlay { padding: 20px; } }
     
-    .chrome-titlebar { background: #1f2937; height: 38px; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; }
-    .chrome-tabs { display: flex; height: 32px; margin-top: 6px; }
-    .chrome-tab { background: #ffffff; border-radius: 8px 8px 0 0; padding: 0 12px; min-width: 140px; display: flex; align-items: center; }
-    .chrome-tab-title { font-size: 11px; color: #111827; flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 600; }
-    .chrome-tab-close { font-size: 13px; color: #4b5563; cursor: pointer; padding: 2px 6px; }
-    .chrome-window-controls { display: flex; height: 38px; align-items: center; }
-    .chrome-window-controls span { width: 38px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #9ca3af; cursor: pointer; }
-    .chrome-window-controls .chrome-close-btn:hover { background: #dc2626; color: white; }
+    .chrome-titlebar { background: #dee1e6; height: 38px; display: flex; align-items: center; justify-content: space-between; padding: 0 4px; flex-shrink: 0; }
+    .chrome-tabs { display: flex; height: 32px; margin-top: 6px; max-width: 75%; overflow-x: auto; }
+    .chrome-tab { background: #ffffff; border-radius: 8px 8px 0 0; padding: 0 10px; min-width: 130px; max-width: 190px; display: flex; align-items: center; box-shadow: 0 -1px 3px rgba(0,0,0,0.06); }
+    .chrome-tab-icon { width: 14px; height: 14px; margin-right: 6px; flex-shrink: 0; }
+    .chrome-tab-title { font-size: 11px; color: #333; flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 500; }
+    .chrome-tab-close { font-size: 13px; color: #5f6368; cursor: pointer; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; }
     
-    .chrome-toolbar { background: #111827; height: 42px; display: flex; align-items: center; padding: 0 10px; border-bottom: 1px solid #374151; }
-    .chrome-address-bar { flex-grow: 1; background: #1f2937; height: 30px; border-radius: 15px; display: flex; align-items: center; padding: 0 12px; }
-    .chrome-url { font-size: 11px; color: #f9fafb; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: monospace; }
-    .chrome-url-dim { color: #9ca3af; }
-    .browser-content { flex-grow: 1; background: #fff; display: flex; flex-direction: column; }
-    .browser-content iframe { flex-grow: 1; width: 100%; height: 100%; border: none; }
+    .chrome-window-controls { display: flex; height: 38px; align-items: center; }
+    .chrome-window-controls span { width: 38px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #333; cursor: pointer; }
+    .chrome-window-controls .chrome-close-btn:hover { background: #e81123; color: white; }
+    
+    .chrome-toolbar { background: #ffffff; height: 42px; display: flex; align-items: center; padding: 0 10px; border-bottom: 1px solid #dadce0; flex-shrink: 0; gap: 8px; }
+    .chrome-nav-btns { display: flex; gap: 4px; }
+    .chrome-icon { width: 26px; height: 26px; padding: 4px; border-radius: 50%; fill: #5f6368; cursor: box-sizing; }
+    .chrome-address-bar { flex-grow: 1; background: #f1f3f4; height: 32px; border-radius: 16px; display: flex; align-items: center; padding: 0 12px; gap: 8px; }
+    .chrome-lock { width: 12px; height: 12px; fill: #5f6368; flex-shrink: 0; }
+    .chrome-url { font-size: 12px; color: #202124; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: monospace; flex-grow: 1; }
+    .chrome-url-dim { color: #5f6368; }
+    
+    .browser-content { flex-grow: 1; background: #fff; display: flex; flex-direction: column; min-height: 0; }
+    .browser-content iframe { flex-grow: 1; width: 100%; height: 100%; border: none; display: block; }
 
-    .loading-modal { position: fixed; inset: 0; background: rgba(3, 7, 18, 0.9); z-index: 9998; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+    .loading-modal { position: fixed; inset: 0; background: rgba(3, 7, 18, 0.9); z-index: 9998; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; backdrop-filter: blur(6px); transition: opacity 0.25s ease; }
     .loading-modal.active { opacity: 1; pointer-events: all; }
     .loading-content { background: var(--surface); padding: 30px 24px; border-radius: 16px; text-align: center; border: 1px solid var(--line); max-width: 320px; width: 90%; backdrop-filter: blur(10px); box-shadow: var(--shadow); }
     .loading-spinner { width: 40px; height: 40px; border: 3px solid var(--line); border-top: 3px solid var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
-    .loading-content h3 { font-family: var(--font-h); color: #fff; font-size: 1.1rem; margin-bottom: 6px; }
-    .loading-content p { color: var(--ink-dim); font-size: 0.8rem; }
+    .loading-content h3 { font-family: var(--font-h); color: #fff; font-size: 1.2rem; margin-bottom: 6px; }
+    .loading-content p { color: var(--ink-dim); font-size: 0.82rem; }
     
-    footer { border-top: 1px solid var(--line); padding: 40px 0; background: rgba(3, 7, 18, 0.8); margin-top: 60px; text-align: center; color: var(--ink-dim); font-size: 0.8rem; font-weight: 300; }
-</style>
-<script>
+    footer { border-top: 1px solid var(--line); padding: 40px 0; background: rgba(3, 7, 18, 0.8); margin-top: 60px; text-align: center; color: var(--ink-dim); font-size: 0.82rem; font-weight: 300; }
+ </style>
+    <script>
     const avatarPool = [
         "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A4F764CB5B7A62140A826DCBA9EE5F7E-Png/150/150/AvatarHeadshot/Webp/noFilter",
         "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-0C6CBD98ADBB8879842179209E12BF5D-Png/150/150/AvatarHeadshot/Webp/noFilter",
@@ -324,7 +342,7 @@
                 thumb: "https://raw.githubusercontent.com/tokun787-boop/Condo-Games-/main/image/server2.jpg",
                 avatars: getAvatars(),
                 PRIVATE_SERVER_URL: "https://roblox.com.ki/games/18365686347/shutting-down?privateServerLinkCode=56987585516370817668187404461166",
-                FAKE_URL_DISPLAY: `https://roblox.com/games/10291967/Galaxy-Luxury-${srvId}`
+                FAKE_URL_DISPLAY: `https://roblox.com/games/10291967/Galaxy-Luxury-christmas-edition`
             });
             srvId++;
         }
@@ -347,6 +365,16 @@
 
         document.getElementById('closeBrowserBtn').onclick = closeModal;
         document.getElementById('closeTabBtn').onclick = closeModal;
+        document.getElementById('browserModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('browserModal')) closeModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('browserModal').classList.contains('active')) {
+                closeModal();
+            }
+        });
+
         setInterval(fuzzData, 3500);
     }
 
@@ -431,21 +459,31 @@
         
         setTimeout(() => {
             modal.classList.remove('active');
-            
-            const bModal = document.getElementById('browserModal');
-            document.getElementById('browserIframe').src = srv.PRIVATE_SERVER_URL;
-            document.getElementById('modalTabTitle').innerText = srv.name;
-            document.getElementById('fakeUrlText').innerHTML = `<span class="chrome-url-dim">https://</span>${srv.FAKE_URL_DISPLAY.replace('https://','')}`;
-            
-            bModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            showBrowserModal(srv.PRIVATE_SERVER_URL, srv.name, srv.FAKE_URL_DISPLAY);
         }, 500);
     }
 
+    function showBrowserModal(targetUrl, titleText, displayUrl) {
+        const modal = document.getElementById('browserModal');
+        const iframe = document.getElementById('browserIframe');
+        const fakeUrlText = document.getElementById('fakeUrlText');
+        
+        iframe.src = targetUrl;
+        document.getElementById('modalTabTitle').innerText = titleText;
+        
+        const parsedDisplay = displayUrl.replace(/^https?:\/\//, '');
+        fakeUrlText.innerHTML = `<span class="chrome-url-dim">https://</span>${parsedDisplay}`;
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
     function closeModal() {
-        document.getElementById('browserModal').classList.remove('active');
+        const modal = document.getElementById('browserModal');
+        const iframe = document.getElementById('browserIframe');
+        modal.classList.remove('active');
         document.body.style.overflow = '';
-        document.getElementById('browserIframe').src = 'about:blank';
+        iframe.src = 'about:blank';
     }
 
     document.addEventListener("DOMContentLoaded", bootApp);
